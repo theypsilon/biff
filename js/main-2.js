@@ -1,7 +1,14 @@
 ;$(document).ready(function() {
 	var template_video_youtube = $('#template_video_youtube').html();
+	var body = $('html, body');
+	function animate(height) {
+		setTimeout(function() {
+			body.animate({scrollTop: height}, 400);
+		}, 400);
+	}
 	$('.filmhead').click(function() {
-		var parent = $(this).parent();
+		var head = $(this);
+		var parent = head.parent();
 		var content = $('.filmcontent', parent);
 		if (content.is(':visible')) {
 			content.hide(600);
@@ -15,6 +22,7 @@
 			content.append(youtube_iframe);
 			script.remove();
 		}
+		animate(head.offset().top);
 	});
 	var movies = $('.movies');
 	var trailers = $('.trailers');
@@ -26,11 +34,13 @@
 		trailers.hide(1000);
 		button_movies.addClass('button-pushed');
 		button_trailers.removeClass('button-pushed');
+		animate(button_movies.offset().top);
 	};
 	window.show_trailers = function() {
 		movies.hide(1000);
 		trailers.show(1000);
 		button_movies.removeClass('button-pushed');
 		button_trailers.addClass('button-pushed');
+		animate(button_trailers.offset().top);
 	};
 });
