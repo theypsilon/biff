@@ -11,7 +11,7 @@
 		var script = $('script', content);
 		if (script.length) {
 			var video_url = script.html();
-			var youtube_iframe = template_video_youtube.replace('/VIDEO_URL_HERE/gi', video_url);
+			var youtube_iframe = template_video_youtube.replace('VIDEO_URL_HERE', video_url);
 			content.append(youtube_iframe);
 			script.remove();
 		}
